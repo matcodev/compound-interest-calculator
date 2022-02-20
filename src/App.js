@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components'
+import { Formik, Form } from 'formik'
+import Input from './components/Input'
+import Button from './components/Button'
+import Container from './components/Container'
+import Section from './components/Section'
 
 function App() {
+  const handleSubmit = () => {}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Container>
+      <Section>
+        <Formik
+          initialValues={{
+            deposit: '',
+            contribution: '',
+            years: '',
+            rate: ''
+          }}
+          onSubmit={handleSubmit}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <Form>
+            <Input name="deposit" label="Depósito Inicial" />
+            <Input name="contribution" label="Contribución anual" />
+            <Input name="years" label="Años" />
+            <Input name="rate" label="Interés estimado" />
+            <Button>Calcular</Button>
+          </Form>
+
+        </Formik>
+      </Section>
+    </Container>
+  )
 }
 
-export default App;
+export default App
